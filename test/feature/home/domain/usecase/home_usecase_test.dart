@@ -9,7 +9,7 @@ import 'package:movie_app/feature/home/domain/usecase/home_usecase.dart';
 
 class MockRepository extends Mock implements HomeRepository {}
 void main() {
-  late HomeRepository repository;
+  late MockRepository repository;
   late HomeUsecase usecase;
 
   setUp(() {
@@ -21,6 +21,6 @@ void main() {
     final expected = HomeEntity(page: 2, movieList: []);
     when(() => repository.getMovies()).thenAnswer((_) async => expected);
     final result = await usecase();
-    expect(expected, result);
+    expect(result, expected); 
   });
 }

@@ -21,7 +21,15 @@ class _HomeViewState extends State<HomeView> {
         title: Text("Home"),
       ),
       body: ListView(
-        children: [],
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              final dio = DioClient.createDio();
+              final datasource = HomeRemoteDatasourceImpl(ApiClient(dio));
+              datasource.getMovies();
+            }, 
+            child: const Text("Button"),),
+        ],
       ),
     );
   }

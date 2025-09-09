@@ -1,65 +1,39 @@
-import 'dart:convert';
+import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
 
-class HomeModel {
-    int page;
-    List<Movie> results;
-
+class HomeModel extends HomeEntity {    
     HomeModel({
-        required this.page,
-        required this.results,
+        required super.page,
+        required super.movieList,
     });
-
-    factory HomeModel.fromRawJson(String str) => HomeModel.fromJson(json.decode(str));
-
-    String toRawJson() => json.encode(toJson());
 
     factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
         page: json["page"],
-        results: List<Movie>.from(json["results"].map((x) => Movie.fromJson(x))),
+        movieList: List<Movie>.from(json["results"].map((x) => Movie.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "page": page,
-        "results": List<dynamic>.from(results.map((x) => x.toJson())),
+        "results": List<dynamic>.from((movieList as List<Movie>).map((x) => x.toJson())),
     };
 }
 
-class Movie {
-    bool adult;
-    String backdropPath;
-    List<int> genreIds;
-    int id;
-    String originalLanguage;
-    String originalTitle;
-    String overview;
-    double popularity;
-    String posterPath;
-    DateTime releaseDate;
-    String title;
-    bool video;
-    double voteAverage;
-    int voteCount;
-
+class Movie  extends MovieEntity{
     Movie({
-        required this.adult,
-        required this.backdropPath,
-        required this.genreIds,
-        required this.id,
-        required this.originalLanguage,
-        required this.originalTitle,
-        required this.overview,
-        required this.popularity,
-        required this.posterPath,
-        required this.releaseDate,
-        required this.title,
-        required this.video,
-        required this.voteAverage,
-        required this.voteCount,
+        super.adult,
+        super.backdropPath,
+        super.genreIds,
+        super.id,
+        super.originalLanguage,
+        super.originalTitle,
+        super.overview,
+        super.popularity,
+        super.posterPath,
+        super.releaseDate,
+        super.title,
+        super.video,
+        super.voteAverage,
+        super.voteCount,
     });
-
-    factory Movie.fromRawJson(String str) => Movie.fromJson(json.decode(str));
-
-    String toRawJson() => json.encode(toJson());
 
     factory Movie.fromJson(Map<String, dynamic> json) => Movie(
         adult: json["adult"],
@@ -81,14 +55,14 @@ class Movie {
     Map<String, dynamic> toJson() => {
         "adult": adult,
         "backdrop_path": backdropPath,
-        "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
+        "genre_ids": List<dynamic>.from(genreIds!.map((x) => x)),
         "id": id,
         "original_language": originalLanguage,
         "original_title": originalTitle,
         "overview": overview,
         "popularity": popularity,
         "poster_path": posterPath,
-        "release_date": "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
+        "release_date": "${releaseDate?.year.toString().padLeft(4, '0')}-${releaseDate?.month.toString().padLeft(2, '0')}-${releaseDate?.day.toString().padLeft(2, '0')}",
         "title": title,
         "video": video,
         "vote_average": voteAverage,

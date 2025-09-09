@@ -8,6 +8,6 @@ class HomeLocalDatasourceImpl implements HomeDatasource {
 
   @override
   Future<HomeModel> getMovies() async {
-    return HomeModel(page: 1, results: []);
+    return HomeModel(page: 1, movieList: []);
   }
 }

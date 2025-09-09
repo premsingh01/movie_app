@@ -1,7 +1,7 @@
 
 class HomeEntity {
     int page;
-    List<Movie> movieList;
+    List<MovieEntity> movieList;
 
     HomeEntity({
         required this.page,
@@ -9,7 +9,7 @@ class HomeEntity {
     });
 }
 
-class Movie {
+class MovieEntity {
     bool? adult;
     String? backdropPath;
     List<int>? genreIds;
@@ -25,7 +25,7 @@ class Movie {
     double? voteAverage;
     int? voteCount;
 
-    Movie({
+    MovieEntity({
          this.adult,
          this.backdropPath,
          this.genreIds,

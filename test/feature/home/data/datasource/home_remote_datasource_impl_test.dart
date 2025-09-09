@@ -20,11 +20,11 @@ void main() {
   });
 
   test("Should get HomeModel when called remote datasource", () async {
-    final expected = HomeModel(page: 1, results: []);
+    final expected = HomeModel(page: 1, movieList: []);
     when(() => apiClient.getMovies()).thenAnswer((_) async=> expected);
     final result = await datasource.getMovies();
 
-    expect(expected, result);
+    expect(result, expected); 
 
   });
 
