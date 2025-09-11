@@ -26,6 +26,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "bloc",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/bloc-9.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/boolean_selector-2.1.2",
       "packageUri": "lib/",
@@ -134,6 +140,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "equatable",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/equatable-2.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/fake_async-1.3.3",
       "packageUri": "lib/",
@@ -156,6 +168,12 @@
       "rootUri": "file:///Users/premsingh/development/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.7"
+    },
+    {
+      "name": "flutter_bloc",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/flutter_bloc-9.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "flutter_lints",
@@ -272,6 +290,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "oxidized",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/oxidized-6.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "package_config",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/package_config-2.2.0",
       "packageUri": "lib/",
@@ -294,6 +324,12 @@
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/protobuf-4.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.7"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/provider-6.1.5+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "pub_semver",

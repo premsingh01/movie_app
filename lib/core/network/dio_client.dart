@@ -4,8 +4,8 @@ class DioClient {
   static Dio createDio() {
     final dio = Dio(
       BaseOptions(
-        connectTimeout: const Duration(seconds: 15),
-        receiveTimeout: const Duration(seconds: 15),
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
         responseType: ResponseType.json,
       ),
     );
@@ -21,8 +21,8 @@ class DioClient {
       InterceptorsWrapper(
         onRequest: (options, handler) {
           // 🔑 Add headers globally
-          options.headers['Content-Type'] = 'application/json';
-          options.headers['Accept'] = 'application/json';
+          // options.headers['Content-Type'] = 'application/json';
+          // options.headers['Accept'] = 'application/json';
           final token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZGI4MTI5MDljZWM2OThkMTljMzhkZTUwYTM0ODBiNSIsIm5iZiI6MTc1NzMzNTAwNi4xNDgsInN1YiI6IjY4YmVjZGRlYmY1MjdjOTNhNTRlNjQ1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.--1KDCCIGrEKnf6pyPeXfQ3jLx_FYZvznqMxmI-CoI4";
           options.headers['Authorization'] = 'Bearer $token';
 

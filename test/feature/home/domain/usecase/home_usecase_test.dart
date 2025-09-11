@@ -19,7 +19,7 @@ void main() {
 
   test("Should get entity when usecase called", () async {
     final expected = HomeEntity(page: 2, movieList: []);
-    when(() => repository.getMovies()).thenAnswer((_) async => expected);
+    // when(() => repository.getMovies()).thenAnswer((_) async => expected);
     final result = await usecase();
     expect(result, expected); 
   });
