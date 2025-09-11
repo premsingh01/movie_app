@@ -14,15 +14,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color.fromARGB(255, 26, 26, 26),
+        primaryColor: Colors.red,
         useMaterial3: true,
         appBarTheme: AppBarTheme(
-          centerTitle: true,
-          backgroundColor: Colors.grey.shade400,
+          centerTitle: false,
+          color: const Color.fromARGB(255, 26, 26, 26),
+          leadingWidth: 10,
+          actionsPadding: const EdgeInsets.only(right: 10),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 24,
+          ),
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const HomeView()
+      home: HomeView(),
     );
   }
 }
