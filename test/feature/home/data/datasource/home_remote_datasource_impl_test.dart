@@ -5,13 +5,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movie_app/core/network/api_client.dart';
-import 'package:movie_app/feature/home/data/datasource/home_datasource.dart';
 import 'package:movie_app/feature/home/data/datasource/home_remote_datasource_impl.dart';
 import 'package:movie_app/feature/home/data/model/home_model.dart';
 
 class MockApiClient extends Mock implements ApiClient {}
 void main() {
-  late HomeDatasource datasource;
+  late HomeRemoteDatasource datasource;
   late ApiClient apiClient;
 
   setUp(() {

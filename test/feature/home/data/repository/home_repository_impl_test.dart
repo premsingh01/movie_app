@@ -2,15 +2,16 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_app/feature/home/data/datasource/home_datasource.dart';
+import 'package:movie_app/feature/home/data/datasource/home_local_datasource_impl.dart';
+import 'package:movie_app/feature/home/data/datasource/home_remote_datasource_impl.dart';
 import 'package:movie_app/feature/home/data/model/home_model.dart';
 import 'package:movie_app/feature/home/data/repository/home_repository_impl.dart';
 import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
 import 'package:movie_app/feature/home/domain/repository/home_repository.dart';
 
-class MockRemoteDatasource extends Mock implements HomeDatasource {}
+class MockRemoteDatasource extends Mock implements HomeRemoteDatasource {}
 
-class MockLocalDatasource extends Mock implements HomeDatasource {}
+class MockLocalDatasource extends Mock implements HomeLocalDatasource {}
 
 
 void main() {

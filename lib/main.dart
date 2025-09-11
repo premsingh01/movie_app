@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/feature/home/presentation/page/home_view.dart';
+import 'service_locator.dart' as di;
 
 void main() {
+  di.init();
   runApp(const MyApp());
 }
 

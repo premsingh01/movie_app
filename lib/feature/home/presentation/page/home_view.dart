@@ -10,6 +10,7 @@ import 'package:movie_app/feature/home/domain/usecase/home_usecase.dart';
 import 'package:movie_app/feature/home/presentation/bloc/home_cubit.dart';
 import 'package:dio/dio.dart' as dioLib;
 import 'package:movie_app/feature/home/presentation/bloc/home_state.dart';
+import 'package:movie_app/service_locator.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -38,14 +39,15 @@ class _HomeViewState extends State<HomeView> {
             child: const Text("Button"),
           ),
           BlocProvider(
-            create: (context) => HomeCubit(
-              HomeUsecase(
-                HomeRepositoryImpl(
-                  HomeRemoteDatasourceImpl(ApiClient(DioClient.createDio())),
-                  HomeLocalDatasourceImpl(),
-                ),
-              ),
-            )..getMovies(),
+            create: (context) => sl<HomeCubit>()..getMovies(),
+            // HomeCubit(
+            //   HomeUsecase(
+            //     HomeRepositoryImpl(
+            //       HomeRemoteDatasourceImpl(ApiClient(DioClient.createDio())),
+            //       HomeLocalDatasourceImpl(),
+            //     ),
+            //   ),
+            // )..getMovies(),
             child: BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
                 switch (state) {
