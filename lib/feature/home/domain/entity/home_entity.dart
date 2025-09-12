@@ -12,7 +12,6 @@ class HomeEntity {
 class MovieEntity {
     bool? adult;
     String? backdropPath;
-    List<int>? genreIds;
     int? id;
     String? originalLanguage;
     String? originalTitle;
@@ -28,7 +27,6 @@ class MovieEntity {
     MovieEntity({
          this.adult,
          this.backdropPath,
-         this.genreIds,
          this.id,
          this.originalLanguage,
          this.originalTitle,

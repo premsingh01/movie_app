@@ -74,6 +74,24 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "cached_network_image",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/cached_network_image-3.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "cached_network_image_platform_interface",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/cached_network_image_platform_interface-4.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "cached_network_image_web",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/cached_network_image_web-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/characters-1.4.0",
       "packageUri": "lib/",
@@ -152,6 +170,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/ffi-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "file",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/file-7.0.1",
       "packageUri": "lib/",
@@ -174,6 +198,12 @@
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/flutter_bloc-9.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "flutter_cache_manager",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_lints",
@@ -208,6 +238,12 @@
     {
       "name": "graphs",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/graphs-2.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/http-1.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -302,6 +338,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "octo_image",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/octo_image-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "oxidized",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/oxidized-6.2.0",
       "packageUri": "lib/",
@@ -318,6 +360,54 @@
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/path-1.9.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "path_provider",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/path_provider-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/path_provider_android-2.2.18",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/platform-3.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "pool",
@@ -362,6 +452,12 @@
       "languageVersion": "3.8"
     },
     {
+      "name": "rxdart",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/rxdart-0.28.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "shelf",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/shelf-1.4.2",
       "packageUri": "lib/",
@@ -392,6 +488,42 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "sprintf",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sprintf-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sqflite",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqflite-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "sqflite_android",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqflite_android-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "sqflite_common",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqflite_common-2.5.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
+    },
+    {
+      "name": "sqflite_darwin",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "sqflite_platform_interface",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqflite_platform_interface-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/stack_trace-1.12.1",
       "packageUri": "lib/",
@@ -416,6 +548,12 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "synchronized",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/synchronized-3.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/term_glyph-1.2.2",
       "packageUri": "lib/",
@@ -432,6 +570,12 @@
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
+    },
+    {
+      "name": "uuid",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/uuid-4.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "vector_math",
@@ -466,6 +610,12 @@
     {
       "name": "web_socket_channel",
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/web_socket_channel-3.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/xdg_directories-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },

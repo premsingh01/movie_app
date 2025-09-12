@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
 import 'package:movie_app/feature/home/presentation/page/movie_detail_view.dart';
@@ -38,9 +39,13 @@ class _HomeMovieWidgetState extends State<HomeMovieWidget> {
                   flex: 2,
                   child: ClipRRect(
                     borderRadius: BorderRadius.horizontal(left: Radius.circular(10)),
-                    child: Image.network(                          
-                      "https://image.tmdb.org/t/p/w500${widget.movie.posterPath}",
+                    child: CachedNetworkImage(
+                      imageUrl: "https://image.tmdb.org/t/p/w500${widget.movie.posterPath}",
                       fit: BoxFit.cover,
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()), // while loading
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error, color: Colors.red), // if failed
                     ),
                   ),
                 ),

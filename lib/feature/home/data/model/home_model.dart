@@ -21,7 +21,6 @@ class Movie  extends MovieEntity{
     Movie({
         super.adult,
         super.backdropPath,
-        super.genreIds,
         super.id,
         super.originalLanguage,
         super.originalTitle,
@@ -38,7 +37,6 @@ class Movie  extends MovieEntity{
     factory Movie.fromJson(Map<String, dynamic> json) => Movie(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
-        genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
         originalLanguage: json["original_language"],
         originalTitle: json["original_title"],
@@ -55,7 +53,6 @@ class Movie  extends MovieEntity{
     Map<String, dynamic> toJson() => {
         "adult": adult,
         "backdrop_path": backdropPath,
-        "genre_ids": List<dynamic>.from(genreIds!.map((x) => x)),
         "id": id,
         "original_language": originalLanguage,
         "original_title": originalTitle,
