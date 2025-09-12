@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/feature/home/presentation/bloc/movie_detail_cubit.dart';
 import 'package:movie_app/feature/home/presentation/bloc/movie_detail_state.dart';
+import 'package:movie_app/feature/home/presentation/widget/movie_details_widget.dart';
 import 'package:movie_app/service_locator.dart';
 
 class MovieDetailView extends StatefulWidget {
@@ -27,7 +28,7 @@ class _MovieDetailViewState extends State<MovieDetailView> {
               case MovieDetailsLoadingState():
                 return Center(child: CircularProgressIndicator());
               case MovieDetailsLoadedState():
-                return Text(state.movieDetails.originalTitle ?? '');
+                return MovieDetailsWidget(movieData: state.movieDetails);
               case MovieDetailsFailureState():
                 return Text(state.errorMsg);
             }
