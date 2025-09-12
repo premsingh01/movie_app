@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
+import 'package:movie_app/feature/home/presentation/page/movie_detail_view.dart';
 
 class HomeMovieWidget extends StatefulWidget {
   final MovieEntity movie;
@@ -17,7 +18,7 @@ class _HomeMovieWidgetState extends State<HomeMovieWidget> {
       highlightColor: Colors.grey.shade700,
       borderRadius: BorderRadius.circular(10),
       onTap: () {
-        print("${widget.movie.originalTitle}");
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MovieDetailView(movieId: widget.movie.id ?? 0,)));
       },
       child: Stack(
         alignment: AlignmentDirectional.bottomEnd,

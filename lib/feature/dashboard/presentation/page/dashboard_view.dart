@@ -27,40 +27,41 @@ class _DashboardViewState extends State<DashboardView> {
       create: (context) => sl<DashboardCubit>()..changeIndex(index: 0),
       child: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
-          switch(state) {
+          switch (state) {
             case DashboardInitialState():
               return const SizedBox.shrink();
             case DashboardLoadingState():
               return const SizedBox.shrink();
             case DashboardLoadedState():
-             return Scaffold(
-        body: _pages[state.index],
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: state.index,
-          selectedItemColor: Colors.red,
-          onTap: (index) {
-            context.read<DashboardCubit>().changeIndex(index: index);
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: "Search",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark),
-              label: "Saved",
-            ),
-          ],
-        ),
-      ); 
+              return Scaffold(
+                body: IndexedStack(index: state.index, children: _pages),
+                bottomNavigationBar: BottomNavigationBar(
+                  currentIndex: state.index,
+                  selectedItemColor: Colors.red,
+                  onTap: (index) {
+                    context.read<DashboardCubit>().changeIndex(index: index);
+                  },
+                  items: const [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      label: "Home",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.search),
+                      label: "Search",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.bookmark),
+                      label: "Saved",
+                    ),
+                  ],
+                ),
+              );
             case DashboardFailureState():
               return const SizedBox.shrink();
           }
-        }),
+        },
+      ),
     );
   }
 }

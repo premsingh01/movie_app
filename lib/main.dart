@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           centerTitle: false,
           color: const Color.fromARGB(255, 26, 26, 26),
-          leadingWidth: 10,
           actionsPadding: const EdgeInsets.only(right: 10),
           titleTextStyle: TextStyle(
             color: Colors.white,
