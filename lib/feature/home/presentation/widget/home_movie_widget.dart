@@ -13,8 +13,9 @@ class _HomeMovieWidgetState extends State<HomeMovieWidget> {
   bool bookmark = false;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
+    return InkWell(      
+      highlightColor: Colors.grey.shade700,
+      borderRadius: BorderRadius.circular(10),
       onTap: () {
         print("${widget.movie.originalTitle}");
       },
@@ -23,30 +24,27 @@ class _HomeMovieWidgetState extends State<HomeMovieWidget> {
         children: [
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
+              border: Border.all(color: Colors.grey.shade800),
               borderRadius: BorderRadius.circular(10),
             ),
-            height: MediaQuery.of(context).size.height * 20.5 / 100,
+            height: MediaQuery.sizeOf(context).height * 20.5 / 100,
             width: double.infinity,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 20,
               children: [
                 Expanded(
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadiusGeometry.circular(10),
-                        child: Image.network(
-                          height: MediaQuery.of(context).size.height * 20 / 100,
-                          width: double.infinity,
-                          "https://image.tmdb.org/t/p/w500${widget.movie.posterPath}",
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ],
+                  flex: 2,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.horizontal(left: Radius.circular(10)),
+                    child: Image.network(                          
+                      "https://image.tmdb.org/t/p/w500${widget.movie.posterPath}",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Expanded(
+                  flex: 3,
                   child: Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: Column(
@@ -132,13 +130,11 @@ class _HomeMovieWidgetState extends State<HomeMovieWidget> {
             onPressed: () {
               bookmark = !bookmark;
               setState(() {});
-            },
-            visualDensity: VisualDensity.compact,
-            padding: EdgeInsets.fromLTRB(0, 0, 2, 14),
+            },            
             icon: Icon(
               Icons.bookmark,
               size: 31,
-              color: bookmark ? Colors.red : Colors.white,
+              color: bookmark ? Colors.red : Colors.grey,
             ),
           ),
         ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/feature/home/presentation/page/home_view.dart';
+import 'package:movie_app/feature/dashboard/presentation/page/dashboard_view.dart';
 import 'service_locator.dart' as di;
 
 void main() {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeView(),
+      home: DashboardView(),
     );
   }
 }

@@ -3,6 +3,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:movie_app/core/network/api_client.dart';
 import 'package:movie_app/core/network/dio_client.dart';
+import 'package:movie_app/feature/dashboard/presentation/bloc/dashboard_cubit.dart';
 import 'package:movie_app/feature/home/data/datasource/home_local_datasource_impl.dart';
 import 'package:movie_app/feature/home/data/datasource/home_remote_datasource_impl.dart';
 import 'package:movie_app/feature/home/data/repository/home_repository_impl.dart';
@@ -24,5 +25,7 @@ void init() {
   sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton(() => HomeUsecase(sl()));
 
-  sl.registerFactory(() => HomeCubit(sl()));
+  sl.registerFactory<HomeCubit>(() => HomeCubit(sl()));
+
+  sl.registerFactory<DashboardCubit>(() => DashboardCubit());
 }

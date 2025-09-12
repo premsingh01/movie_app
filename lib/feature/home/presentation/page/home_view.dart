@@ -14,7 +14,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   @override
-  initState() {
+  void initState() {
     super.initState();
   }
 
@@ -24,12 +24,6 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Home"),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search, size: 27, color: Colors.white),
-            ),
-          ],
         ),
         body: BlocProvider(
           create: (context) => sl<HomeCubit>()..getMovies(),
@@ -44,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
                   return ListView.separated(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
-                      vertical: 15,
+                      vertical: 10,
                     ),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 13),
