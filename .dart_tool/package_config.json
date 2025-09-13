@@ -111,9 +111,9 @@
     },
     {
       "name": "code_builder",
-      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/code_builder-4.10.1",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/code_builder-4.11.0",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     },
     {
       "name": "collection",
@@ -156,6 +156,18 @@
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/dio_web_adapter-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
+    },
+    {
+      "name": "drift",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/drift-2.28.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "drift_flutter",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/drift_flutter-0.2.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
     },
     {
       "name": "equatable",
@@ -522,6 +534,18 @@
       "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqflite_platform_interface-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
+    },
+    {
+      "name": "sqlite3",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqlite3-2.9.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "sqlite3_flutter_libs",
+      "rootUri": "file:///Users/premsingh/.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.39",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "stack_trace",

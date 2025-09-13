@@ -5,7 +5,6 @@ import 'package:movie_app/feature/home/domain/entity/movie_details_entity.dart' 
 class MovieDetailsModel extends movie_details_entity.MovieDetailsEntity {
 
     MovieDetailsModel({
-        super.adult,
         super.backdropPath,
         super.id,
         super.originalLanguage,
@@ -15,7 +14,6 @@ class MovieDetailsModel extends movie_details_entity.MovieDetailsEntity {
         super.posterPath,
         super.releaseDate,
         super.title,
-        super.video,
         super.voteAverage,
         super.voteCount,
     });
@@ -25,7 +23,6 @@ class MovieDetailsModel extends movie_details_entity.MovieDetailsEntity {
     String toRawJson() => json.encode(toJson());
 
     factory MovieDetailsModel.fromJson(Map<String, dynamic> json) => MovieDetailsModel(
-        adult: json["adult"],
         backdropPath: json["backdrop_path"],
         id: json["id"],
         originalLanguage: json["original_language"],
@@ -35,13 +32,11 @@ class MovieDetailsModel extends movie_details_entity.MovieDetailsEntity {
         posterPath: json["poster_path"],
         releaseDate: json["release_date"] == null ? null : DateTime.parse(json["release_date"]),
         title: json["title"],
-        video: json["video"],
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
     );
 
     Map<String, dynamic> toJson() => {
-        "adult": adult,
         "backdrop_path": backdropPath,
         "id": id,
         "original_language": originalLanguage,
@@ -51,7 +46,6 @@ class MovieDetailsModel extends movie_details_entity.MovieDetailsEntity {
         "poster_path": posterPath,
         "release_date": "${releaseDate!.year.toString().padLeft(4, '0')}-${releaseDate!.month.toString().padLeft(2, '0')}-${releaseDate!.day.toString().padLeft(2, '0')}",
         "title": title,
-        "video": video,
         "vote_average": voteAverage,
         "vote_count": voteCount,
     };

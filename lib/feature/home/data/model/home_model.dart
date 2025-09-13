@@ -19,7 +19,6 @@ class HomeModel extends HomeEntity {
 
 class Movie  extends MovieEntity{
     Movie({
-        super.adult,
         super.backdropPath,
         super.id,
         super.originalLanguage,
@@ -29,13 +28,11 @@ class Movie  extends MovieEntity{
         super.posterPath,
         super.releaseDate,
         super.title,
-        super.video,
         super.voteAverage,
         super.voteCount,
     });
 
     factory Movie.fromJson(Map<String, dynamic> json) => Movie(
-        adult: json["adult"],
         backdropPath: json["backdrop_path"],
         id: json["id"],
         originalLanguage: json["original_language"],
@@ -45,13 +42,11 @@ class Movie  extends MovieEntity{
         posterPath: json["poster_path"],
         releaseDate: DateTime.parse(json["release_date"]),
         title: json["title"],
-        video: json["video"],
         voteAverage: json["vote_average"].toDouble(),
         voteCount: json["vote_count"],
     );
 
     Map<String, dynamic> toJson() => {
-        "adult": adult,
         "backdrop_path": backdropPath,
         "id": id,
         "original_language": originalLanguage,
@@ -61,7 +56,6 @@ class Movie  extends MovieEntity{
         "poster_path": posterPath,
         "release_date": "${releaseDate?.year.toString().padLeft(4, '0')}-${releaseDate?.month.toString().padLeft(2, '0')}-${releaseDate?.day.toString().padLeft(2, '0')}",
         "title": title,
-        "video": video,
         "vote_average": voteAverage,
         "vote_count": voteCount,
     };

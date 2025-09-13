@@ -1,6 +1,5 @@
 
 class MovieDetailsEntity {
-    bool? adult;
     String? backdropPath;
     int? id;
     String? originalLanguage;
@@ -10,12 +9,10 @@ class MovieDetailsEntity {
     String? posterPath;
     DateTime? releaseDate;
     String? title;
-    bool? video;
     double? voteAverage;
     int? voteCount;
 
     MovieDetailsEntity({
-        this.adult,
         this.backdropPath,
         this.id,
         this.originalLanguage,
@@ -25,7 +22,6 @@ class MovieDetailsEntity {
         this.posterPath,
         this.releaseDate,
         this.title,
-        this.video,
         this.voteAverage,
         this.voteCount,
     });}

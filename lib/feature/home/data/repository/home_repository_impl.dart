@@ -1,3 +1,4 @@
+import 'package:movie_app/core/database/dao/movie_dao.dart';
 import 'package:movie_app/feature/home/data/datasource/home_local_datasource_impl.dart';
 import 'package:movie_app/feature/home/data/datasource/home_remote_datasource_impl.dart';
 import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
@@ -10,10 +11,22 @@ class HomeRepositoryImpl implements HomeRepository {
   final HomeLocalDatasource localDatasource;
 
   const HomeRepositoryImpl(this.remoteDatasource, this.localDatasource);
+
   @override
   Future<Result<HomeEntity, Err>> getMovies() async {
     // First try remote
     final remoteResult = await _fetchRemoteMovies();
+
+    // +++++++++++++++
+    await remoteResult.when(
+      ok: (p0) async => await localDatasource.saveMovies(p0.movieList).then((val) async {
+        final localResponse = await localDatasource.getMovies();
+    print("local reponse in home Repository ${localResponse.movieList.length}");
+      }),
+       err: (err) => "");
+    // final localResponse = await localDatasource.getMovies();
+    // print("local reponse in home Repository ${localResponse.toString()}");
+    // +++++++++++++++
 
     if (remoteResult.isOk()) {
       return remoteResult;
