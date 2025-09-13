@@ -8,8 +8,8 @@ class HomeInitialState implements HomeState {}
 class HomeLoadingState implements HomeState {}
 
 class HomeLoadedState implements HomeState {
-  HomeEntity movieData;
-  HomeLoadedState({required this.movieData});
+  List<MovieEntity> movieList;
+  HomeLoadedState({required this.movieList});
 }
 
 class HomeFailureState implements HomeState {

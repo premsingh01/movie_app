@@ -3,7 +3,7 @@ import 'package:movie_app/feature/home/data/model/home_model.dart';
 import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
 
 abstract class HomeLocalDatasource {
-  Future<HomeModel> getMovies();
+  Future<List<Movie>> getMovies();
   Future<void> saveMovies(List<MovieEntity> apiMovieList);
 }
 
@@ -11,14 +11,14 @@ class HomeLocalDatasourceImpl implements HomeLocalDatasource {
   final movieDao = MovieDao();
 
   @override
-  Future<HomeModel> getMovies() async {
+  Future<List<Movie>> getMovies() async {
     final List<Map<String, dynamic>> movies = await movieDao.getMovies();
-    final List<MovieEntity> movieResult = movies
+    final List<Movie> movieResult = movies
         .map((e) => Movie.fromJson(e))
-        .toList(); //.forEach((val) => Movie.fromJson(val)).toList();
-    print("+++++++++++++Local Storage movies result: ${movieResult.length}");
+        .toList();
+    print("+++++++++++++Local Storage getMovies result: ${movieResult.length}");
 
-    return HomeModel(page: 0, movieList: movieResult); //correct (doubt)
+    return movieResult;
   }
 
   @override
@@ -39,31 +39,7 @@ class HomeLocalDatasourceImpl implements HomeLocalDatasource {
         "vote_average": json.voteAverage,
         "vote_count": json.voteCount,
       };
-    }).toList(); //convertApiToDb(apiMovies);
+    }).toList();
     await movieDao.insertMovies(movies);
-
-    //       final db = AppDatabase();
-
-    // // Converting JSON to Drift companion
-    // final movies = apiMovie.map((json) {
-    //   return MoviesCompanion.insert(
-    //     id: Value(json.id),
-    //     adult: Value(json.adult),
-    //     backdropPath: Value(json.backdropPath),
-    //     originalLanguage: Value(json.originalLanguage),
-    //     originalTitle: Value(json.originalTitle),
-    //     overview: Value(json.overview),
-    //     popularity: Value((json.popularity ?? 0).toDouble()),
-    //     posterPath: Value(json.posterPath),
-    //     releaseDate: json.releaseDate != null
-    //         ? Value(json.releaseDate)
-    //         : const Value.absent(),
-    //     title: Value(json.title),
-    //     video: Value(json.video),
-    //     voteAverage: Value((json.voteAverage ?? 0).toDouble()),
-    //     voteCount: Value(json.voteCount),
-    //   );
-    // }).toList();
-    // await db.movieDao.insertMovies(movies);
   }
 }

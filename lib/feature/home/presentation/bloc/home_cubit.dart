@@ -10,7 +10,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeLoadingState());
     final result = await usecase();
     result.when(
-      ok: (p0) => emit(HomeLoadedState(movieData: p0)),
+      ok: (p0) => emit(HomeLoadedState(movieList: p0)),
       err: (error) => emit(HomeFailureState(errorMsg: error.error.toString())),
     );
   }

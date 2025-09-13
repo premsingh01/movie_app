@@ -43,10 +43,10 @@ class _HomeViewState extends State<HomeView> {
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 13),
                     shrinkWrap: true,
-                    itemCount: state.movieData.movieList.length,
+                    itemCount: state.movieList.length,
                     itemBuilder: (context, index) {
                       return HomeMovieWidget(
-                        movie: state.movieData.movieList[index],
+                        movie: state.movieList[index],
                       );
                     },
                   );

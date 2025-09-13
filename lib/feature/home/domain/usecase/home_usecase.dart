@@ -10,7 +10,7 @@ class HomeUsecase {
 
   const HomeUsecase(this.homeRepository);
 
-  Future<Result<HomeEntity, Err>> call() async {
+  Future<Result<List<MovieEntity>, Err>> call() async {
     return homeRepository.getMovies();
     }
 }

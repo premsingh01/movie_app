@@ -1,6 +1,9 @@
-import 'package:movie_app/core/database/dao/movie_dao.dart';
+import 'dart:io';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:movie_app/feature/home/data/datasource/home_local_datasource_impl.dart';
 import 'package:movie_app/feature/home/data/datasource/home_remote_datasource_impl.dart';
+import 'package:movie_app/feature/home/data/model/home_model.dart';
 import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
 import 'package:movie_app/feature/home/domain/entity/movie_details_entity.dart';
 import 'package:movie_app/feature/home/domain/repository/home_repository.dart';
@@ -13,37 +16,58 @@ class HomeRepositoryImpl implements HomeRepository {
   const HomeRepositoryImpl(this.remoteDatasource, this.localDatasource);
 
   @override
-  Future<Result<HomeEntity, Err>> getMovies() async {
-    // First try remote
+Future<Result<List<MovieEntity>, Err>> getMovies() async {
+  final hasNet = await _hasNetwork();
+
+  if (hasNet) {
+    // Try remote API
     final remoteResult = await _fetchRemoteMovies();
 
-    // +++++++++++++++
-    await remoteResult.when(
-      ok: (p0) async => await localDatasource.saveMovies(p0.movieList).then((val) async {
-        final localResponse = await localDatasource.getMovies();
-    print("local reponse in home Repository ${localResponse.movieList.length}");
-      }),
-       err: (err) => "");
-    // final localResponse = await localDatasource.getMovies();
-    // print("local reponse in home Repository ${localResponse.toString()}");
-    // +++++++++++++++
-
     if (remoteResult.isOk()) {
-      return remoteResult;
-    }
+      // Save to local DB
+      final movies = remoteResult.unwrap();
+      await localDatasource.saveMovies(movies);
 
-    // If remote fails, fallback to local
-    final localResult = await _fetchLocalMovies();
-    return localResult;
+      // Always return from local DB (ensures consistency)
+      final localResult = await _fetchLocalMovies();
+      return localResult;
+    }
   }
 
-  Future<Result<HomeEntity, Err>> _fetchRemoteMovies() async {
+  // If no internet or remote failed → fallback to local DB
+  final localResult = await _fetchLocalMovies();
+  return localResult;
+}
+
+
+Future<bool> _hasNetwork() async {
+  try {
+    final connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult == ConnectivityResult.none) {
+      return false; // No network at all
+    }
+
+    // Fast internet check with timeout
+    final result = await InternetAddress.lookup('google.com')
+        .timeout(const Duration(seconds: 2));
+
+    return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+  } catch (_) {
+    return false; // Any error treat as offline
+  }
+}
+
+
+  Future<Result<List<Movie>, Err>> _fetchRemoteMovies() async {
     return await Result.asyncOf(() => remoteDatasource.getMovies());
   }
 
-  Future<Result<HomeEntity, Err>> _fetchLocalMovies() async {
+  Future<Result<List<Movie>, Err>> _fetchLocalMovies() async {
     return await Result.asyncOf(() => localDatasource.getMovies());
   }
+
+
 
   @override
   Future<Result<MovieDetailsEntity, Err>> getMovieDetails({
