@@ -55,11 +55,10 @@ class _HomePosterTileState extends State<HomePosterTile> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        final id = widget.movie.id ?? 0;
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => MovieDetailView(movieId: id),
+            builder: (_) => MovieDetailView(movie: widget.movie),
           ),
         );
       },

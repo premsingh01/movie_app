@@ -1,4 +1,6 @@
 import 'package:movie_app/core/database/table/movie.table.dart';
+import 'package:movie_app/core/database/table/now_playing.table.dart';
+import 'package:movie_app/core/database/table/trending.table.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -20,9 +22,17 @@ class AppDatabase {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
-        await MovieTable.createTable(db); // create Movie table
+        await MovieTable.createTable(db); // legacy generic
+        await NowPlayingTable.createTable(db);
+        await TrendingTable.createTable(db);
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await NowPlayingTable.createTable(db);
+          await TrendingTable.createTable(db);
+        }
       },
     );
   }
