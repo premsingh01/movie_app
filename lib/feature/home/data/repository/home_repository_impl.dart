@@ -24,13 +24,9 @@ Future<Result<List<MovieEntity>, Err>> getMovies() async {
     final remoteResult = await _fetchRemoteMovies();
 
     if (remoteResult.isOk()) {
-      // Save to local DB
+      // Return remote movies directly; do not persist into bookmarks DB
       final movies = remoteResult.unwrap();
-      await localDatasource.saveMovies(movies);
-
-      // Always return from local DB (ensures consistency)
-      final localResult = await _fetchLocalMovies();
-      return localResult;
+      return Result.ok(movies);
     }
   }
 
@@ -77,5 +73,32 @@ Future<bool> _hasNetwork() async {
       () => remoteDatasource.getMovieDetails(movieId: movieId),
     );
     return remoteResult;
+  }
+
+  @override
+  Future<Result<List<MovieEntity>, Err>> getTrendingMovies({int page = 1}) async {
+    final hasNet = await _hasNetwork();
+    if (hasNet) {
+      final remoteResult = await Result.asyncOf<List<Movie>, Err>(
+        () => remoteDatasource.getTrendingMovies(page: page),
+      );
+      return remoteResult.map<List<MovieEntity>>((value) => value);
+    }
+    // no local cache for trending; fallback to local generic list
+    final localResult = await _fetchLocalMovies();
+    return localResult.map<List<MovieEntity>>((value) => value);
+  }
+
+  @override
+  Future<Result<List<MovieEntity>, Err>> getNowPlayingMovies({int page = 1}) async {
+    final hasNet = await _hasNetwork();
+    if (hasNet) {
+      final remoteResult = await Result.asyncOf<List<Movie>, Err>(
+        () => remoteDatasource.getNowPlayingMovies(page: page),
+      );
+      return remoteResult.map<List<MovieEntity>>((value) => value);
+    }
+    final localResult = await _fetchLocalMovies();
+    return localResult.map<List<MovieEntity>>((value) => value);
   }
 }

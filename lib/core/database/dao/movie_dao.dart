@@ -45,6 +45,19 @@ class MovieDao {
     final db = await AppDatabase.instance.database;
     return await db.delete(table);
   }
+
+  /// Check if a movie is saved by ID
+  Future<bool> isSaved(int id) async {
+    final db = await AppDatabase.instance.database;
+    final result = await db.query(
+      table,
+      columns: const ["id"],
+      where: "id = ?",
+      whereArgs: [id],
+      limit: 1,
+    );
+    return result.isNotEmpty;
+  }
 }
 
 

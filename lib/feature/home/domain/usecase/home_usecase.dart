@@ -13,4 +13,12 @@ class HomeUsecase {
   Future<Result<List<MovieEntity>, Err>> call() async {
     return homeRepository.getMovies();
     }
+
+  Future<Result<List<MovieEntity>, Err>> fetchTrending({int page = 1}) async {
+    return homeRepository.getTrendingMovies(page: page);
+  }
+
+  Future<Result<List<MovieEntity>, Err>> fetchNowPlaying({int page = 1}) async {
+    return homeRepository.getNowPlayingMovies(page: page);
+  }
 }
