@@ -1,9 +1,12 @@
-import 'package:movie_app/feature/home/data/model/home_model.dart';
-import 'package:movie_app/feature/search/domain/repository.dart/search_repository.dart';
+import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
+import 'package:movie_app/feature/search/domain/repository/search_repository.dart';
 import 'package:oxidized/oxidized.dart';
 
 class SearchUsecase {
-  SearchRepository repository;
+  final SearchRepository repository;
+  
   SearchUsecase(this.repository);
-  Future<Result<Movie,Err>> search(String query)=> repository.search(query);
+  
+  Future<Result<HomeEntity, String>> searchMovies(String query) => 
+      repository.searchMovies(query);
 }

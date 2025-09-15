@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/feature/dashboard/presentation/bloc/dashboard_cubit.dart';
 import 'package:movie_app/feature/dashboard/presentation/bloc/dashboard_state.dart';
 import 'package:movie_app/feature/home/presentation/page/home_view.dart';
+import 'package:movie_app/feature/search/presentation/page/search_view.dart';
 import 'package:movie_app/service_locator.dart';
 
 class DashboardView extends StatefulWidget {
@@ -17,7 +18,7 @@ class _DashboardViewState extends State<DashboardView> {
 
   final List<Widget> _pages = [
     HomeView(),
-    const Center(child: Text("Search Page", style: TextStyle(fontSize: 24))),
+    const SearchView(),
     const Center(child: Text("Saved Page", style: TextStyle(fontSize: 24))),
   ];
 

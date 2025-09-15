@@ -20,4 +20,9 @@ abstract class ApiClient {
 
   @GET("/movie/{id}")
   Future<MovieDetailsModel> getMovieDetails(@Path("id") int movieId);
+
+  @GET("/search/movie")
+  Future<HomeModel> searchMovies(
+    @Query("query") String query,
+  );
 }
