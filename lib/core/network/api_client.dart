@@ -14,10 +14,19 @@ abstract class ApiClient {
 
   @GET("/trending/movie/day")
   Future<HomeModel> getTrendingMovies(
-    @Query("api_key") String apiKey,
+    @Query("page") int page,
+  );
+
+  @GET("/movie/now_playing")
+  Future<HomeModel> getNowPlayingMovies(
     @Query("page") int page,
   );
 
   @GET("/movie/{id}")
   Future<MovieDetailsModel> getMovieDetails(@Path("id") int movieId);
+
+  @GET("/search/movie")
+  Future<HomeModel> searchMovies(
+    @Query("query") String query,
+  );
 }

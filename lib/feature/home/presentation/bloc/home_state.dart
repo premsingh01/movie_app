@@ -8,8 +8,9 @@ class HomeInitialState implements HomeState {}
 class HomeLoadingState implements HomeState {}
 
 class HomeLoadedState implements HomeState {
-  List<MovieEntity> movieList;
-  HomeLoadedState({required this.movieList});
+  List<MovieEntity> trending;
+  List<MovieEntity> nowPlaying;
+  HomeLoadedState({required this.trending, required this.nowPlaying});
 }
 
 class HomeFailureState implements HomeState {

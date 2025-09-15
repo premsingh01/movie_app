@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/feature/home/domain/entity/movie_details_entity.dart';
+import 'package:movie_app/feature/saved/presentation/bloc/saved_cubit.dart';
+import 'package:movie_app/service_locator.dart';
 
 class MovieDetailsWidget extends StatefulWidget {
   final MovieDetailsEntity movieData;
@@ -11,6 +13,32 @@ class MovieDetailsWidget extends StatefulWidget {
 }
 
 class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
+  bool _bookmarked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initBookmark();
+  }
+
+  Future<void> _initBookmark() async {
+    final id = widget.movieData.id;
+    if (id != null) {
+      final saved = await sl<SavedCubit>().isSaved(id);
+      if (mounted) {
+        setState(() => _bookmarked = saved);
+      }
+    }
+  }
+
+  Future<void> _toggleBookmark() async {
+    final id = widget.movieData.id;
+    if (id == null) return;
+    await sl<SavedCubit>().toggleBookmarkFromEntity(widget.movieData);
+    if (mounted) {
+      setState(() => _bookmarked = !_bookmarked);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,6 +46,16 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              onPressed: _toggleBookmark,
+              icon: Icon(
+                Icons.bookmark,
+                color: _bookmarked ? Colors.red : Colors.grey,
+              ),
+            ),
+          ),
           ClipRRect(
             borderRadius: BorderRadius.circular(
               10,

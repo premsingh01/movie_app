@@ -8,10 +8,26 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> getMovies() async {
     emit(HomeLoadingState());
-    final result = await usecase();
-    result.when(
-      ok: (p0) => emit(HomeLoadedState(movieList: p0)),
-      err: (error) => emit(HomeFailureState(errorMsg: error.error.toString())),
-    );
+    final results = await Future.wait([
+      usecase.fetchTrending(),
+      usecase.fetchNowPlaying(),
+    ]);
+
+    final trendingResult = results[0];
+    final nowPlayingResult = results[1];
+
+    if (trendingResult.isOk() && nowPlayingResult.isOk()) {
+      emit(
+        HomeLoadedState(
+          trending: trendingResult.unwrap(),
+          nowPlaying: nowPlayingResult.unwrap(),
+        ),
+      );
+    } else {
+      final errorMsg = trendingResult.isErr()
+          ? trendingResult.unwrapErr().error.toString()
+          : nowPlayingResult.unwrapErr().error.toString();
+      emit(HomeFailureState(errorMsg: errorMsg));
+    }
   }
 }

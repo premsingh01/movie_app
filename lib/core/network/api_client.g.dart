@@ -49,12 +49,9 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<HomeModel> getTrendingMovies(String apiKey, int page) async {
+  Future<HomeModel> getTrendingMovies(int page) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'api_key': apiKey,
-      r'page': page,
-    };
+    final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HomeModel>(
@@ -62,6 +59,33 @@ class _ApiClient implements ApiClient {
           .compose(
             _dio.options,
             '/trending/movie/day',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late HomeModel _value;
+    try {
+      _value = HomeModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<HomeModel> getNowPlayingMovies(int page) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HomeModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/movie/now_playing',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -98,6 +122,33 @@ class _ApiClient implements ApiClient {
     late MovieDetailsModel _value;
     try {
       _value = MovieDetailsModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<HomeModel> searchMovies(String query) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'query': query};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HomeModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/search/movie',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late HomeModel _value;
+    try {
+      _value = HomeModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
