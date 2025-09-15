@@ -1,12 +1,31 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/feature/home/domain/entity/movie_details_entity.dart';
+import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
 import 'package:movie_app/feature/saved/presentation/bloc/saved_cubit.dart';
 import 'package:movie_app/service_locator.dart';
 
 class MovieDetailsWidget extends StatefulWidget {
   final MovieDetailsEntity movieData;
   const MovieDetailsWidget({super.key, required this.movieData});
+
+  factory MovieDetailsWidget.fromMovieEntity(MovieEntity movie) {
+    return MovieDetailsWidget(
+      movieData: MovieDetailsEntity(
+        id: movie.id,
+        backdropPath: movie.backdropPath,
+        originalLanguage: movie.originalLanguage,
+        originalTitle: movie.originalTitle,
+        overview: movie.overview,
+        popularity: movie.popularity,
+        posterPath: movie.posterPath,
+        releaseDate: movie.releaseDate,
+        title: movie.title,
+        voteAverage: movie.voteAverage,
+        voteCount: movie.voteCount,
+      ),
+    );
+  }
 
   @override
   State<MovieDetailsWidget> createState() => _MovieDetailsWidgetState();

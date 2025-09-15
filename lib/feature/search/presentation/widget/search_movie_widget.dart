@@ -56,7 +56,7 @@ class _SearchMovieWidgetState extends State<SearchMovieWidget> {
         Navigator.push(
           context, 
           MaterialPageRoute(
-            builder: (_) => MovieDetailView(movieId: widget.movie.id ?? 0),
+            builder: (_) => MovieDetailView(movie: widget.movie),
           ),
         );
       },

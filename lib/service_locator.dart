@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:movie_app/core/network/api_client.dart';
 import 'package:movie_app/core/network/dio_client.dart';
-import 'package:movie_app/core/bookmark/bookmark_bus.dart';
 import 'package:movie_app/feature/dashboard/presentation/bloc/dashboard_cubit.dart';
 import 'package:movie_app/feature/home/data/datasource/home_local_datasource_impl.dart';
 import 'package:movie_app/feature/home/data/datasource/home_remote_datasource_impl.dart';
@@ -25,36 +24,23 @@ void init() {
   //core
   sl.registerLazySingleton(() => DioClient.createDio());
   sl.registerLazySingleton(() => ApiClient(sl()));
-  sl.registerLazySingleton<BookmarkBus>(() => BookmarkBus());
 
   //home
-  sl.registerLazySingleton<HomeRemoteDatasource>(
-    () => HomeRemoteDatasourceImpl(sl()),
-  );
-  sl.registerLazySingleton<HomeLocalDatasource>(
-    () => HomeLocalDatasourceImpl(),
-  );
-  sl.registerLazySingleton<HomeRepository>(
-    () => HomeRepositoryImpl(sl(), sl()),
-  );
+  sl.registerLazySingleton<HomeRemoteDatasource>(() => HomeRemoteDatasourceImpl(sl()));
+  sl.registerLazySingleton<HomeLocalDatasource>(() => HomeLocalDatasourceImpl());
+  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton(() => HomeUsecase(sl()));
 
   sl.registerFactory<HomeCubit>(() => HomeCubit(sl()));
 
   sl.registerFactory<DashboardCubit>(() => DashboardCubit());
 
-  sl.registerLazySingleton<MovieDetailUsecase>(
-    () => MovieDetailUsecase(sl()),
-  );
+  sl.registerLazySingleton<MovieDetailUsecase>(() => MovieDetailUsecase(sl()));
   sl.registerFactory<MovieDetailsCubit>(() => MovieDetailsCubit(sl()));
 
   //search
-  sl.registerLazySingleton<SearchRemoteDatasource>(
-    () => SearchRemoteDatasourceImpl(sl()),
-  );
-  sl.registerLazySingleton<SearchRepository>(
-    () => SearchRepositoryImpl(sl()),
-  );
+  sl.registerLazySingleton<SearchRemoteDatasource>(() => SearchRemoteDatasourceImpl(sl()));
+  sl.registerLazySingleton<SearchRepository>(() => SearchRepositoryImpl(sl()));
   sl.registerLazySingleton(() => SearchUsecase(sl()));
   sl.registerFactory<SearchCubit>(() => SearchCubit(sl()));
 

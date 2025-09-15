@@ -72,7 +72,7 @@ class _HomeMovieWidgetState extends State<HomeMovieWidget> {
       highlightColor: Colors.grey.shade700,
       borderRadius: BorderRadius.circular(10),
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => MovieDetailView(movieId: widget.movie.id ?? 0,)));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => MovieDetailView(movie: widget.movie)));
       },
       child: Stack(
         alignment: AlignmentDirectional.bottomEnd,
