@@ -88,11 +88,12 @@ Future<bool> _hasNetwork() async {
         final movies = remoteResult.unwrap();
         await localDatasource.saveTrending(movies);
       }
-      return remoteResult.map<List<MovieEntity>>((value) => value);
+
+      return remoteResult;
     }
     // offline: return cached trending list
     final cached = await Result.asyncOf<List<Movie>, Err>(() => localDatasource.getTrending());
-    return cached.map<List<MovieEntity>>((value) => value);
+    return cached;
   }
 
   @override

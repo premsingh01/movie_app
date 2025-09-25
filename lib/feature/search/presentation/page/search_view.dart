@@ -83,13 +83,21 @@ class _SearchViewState extends State<SearchView> {
                   hintText: "Search for movies...",
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: _searchController.text.isNotEmpty
-                      ? IconButton(
-                          icon: const Icon(Icons.clear),
-                          onPressed: () {
-                            _searchController.clear();
-                            _searchCubit.clearSearch();
-                          },
-                        )
+                      ? ValueListenableBuilder(
+                        valueListenable: _searchController,
+                        builder: (context, value, __) {
+                          if(value.text.isEmpty){
+                            return SizedBox.shrink();
+                          }
+                          return IconButton(
+                              icon: const Icon(Icons.clear),
+                              onPressed: () {
+                                _searchController.clear();
+                                _searchCubit.clearSearch();
+                              },
+                            );
+                        }
+                      )
                       : null,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
