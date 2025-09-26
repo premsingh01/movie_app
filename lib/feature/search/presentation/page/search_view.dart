@@ -94,6 +94,7 @@ class _SearchViewState extends State<SearchView> {
                               onPressed: () {
                                 _searchController.clear();
                                 _searchCubit.clearSearch();
+                                FocusScope.of(context).requestFocus(FocusNode());
                               },
                             );
                         }

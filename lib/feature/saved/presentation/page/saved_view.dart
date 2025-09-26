@@ -82,6 +82,7 @@ class _SavedViewState extends State<SavedView> {
                       itemCount: state.movieList.length,
                       itemBuilder: (context, index) {
                         return HomeMovieWidget(
+                          key: ValueKey(state.movieList[index].id),
                           movie: state.movieList[index],
                         );
                       },

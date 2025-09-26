@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/database/dao/movie_dao.dart';
 import 'package:movie_app/feature/home/domain/entity/home_entity.dart';
 import 'package:movie_app/feature/home/presentation/page/movie_detail_view.dart';
+import 'package:movie_app/feature/saved/presentation/bloc/saved_cubit.dart';
 import 'package:movie_app/service_locator.dart';
 
 class HomeMovieWidget extends StatefulWidget {
@@ -63,12 +65,14 @@ class _HomeMovieWidgetState extends State<HomeMovieWidget> {
       setState(() {
         bookmark = !bookmark;
       });
+      await context.read<SavedCubit>().loadSaved();
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell      (
+      key: widget.key,
       highlightColor: Colors.grey.shade700,
       borderRadius: BorderRadius.circular(10),
       onTap: () {
